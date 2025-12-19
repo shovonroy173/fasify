@@ -176,7 +176,7 @@ const ProviderAttractionBusinessLogoScreen = () => {
             path="ProviderAttractionBusinessReview"
             ids={[
               "attractionType",
-              "attractionTagline",
+              "attractionBusinessTagline",
               "attractionBusinessDescription",
               "businessLogo",
               "attractionBookingCondition",

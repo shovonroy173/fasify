@@ -41,9 +41,9 @@ const ActiveAttractionBusinessCard = ({
               <ThemedText styles="font-SemiBold text-base">
                 {item?.attractionBusinessName}
               </ThemedText>
-              <ThemedText3 styles="text-sm mt-1 font-Regular">
+              {/* <ThemedText3 styles="text-sm mt-1 font-Regular">
                 {item?.attractionBusinessTagline}
-              </ThemedText3>
+              </ThemedText3> */}
 
               {/* <ThemedText3 styles="text-xs font-Regular">
                 Total Attractions: {item?.totalAppeals}
