@@ -1,6 +1,5 @@
 import { View,  ScrollView } from 'react-native';
 import React from 'react';
-import { useGetPrivacyPolicyQuery } from '../../redux/slices/authSlice';
 import ThemedView from '../../utils/ThemedView';
 import {
   responsiveHeight,
@@ -30,15 +29,6 @@ const Section = ({ title, data }) => (
 );
 
 const PrivacyPolicyScreen = () => {
-  const {
-    data: item,
-    isLoading,
-    isError,
-  } = useGetPrivacyPolicyQuery(undefined, {
-    refetchOnMountOrArgChange: true,
-  });
-  const policyData = item?.data;
-  console.log("LINE AT 41s", policyData);
   const navigation = useNavigation();
   return (
     <ThemedView
@@ -52,55 +42,102 @@ const PrivacyPolicyScreen = () => {
       <GoBack navigation={navigation} />
       <ScrollView showsVerticalScrollIndicator={false}>
         {/* Title */}
-        <ThemedText styles="text-2xl font-Bold  mb-3">
-          {policyData?.title}
+        <ThemedText styles="text-2xl font-Bold mb-3">
+          FASIFY – PRIVACY POLICY
         </ThemedText>
 
         {/* Introduction */}
         <ThemedText styles="text-base font-Regular mb-4">
-          {policyData?.introduction}
+          This Privacy Policy explains how Fasify (“we,” “our,” or “us”) collects, uses, stores, and protects your personal information when you use our mobile application, website, and related services. By using our services, you consent to the practices described in this policy.
         </ThemedText>
 
-        {/* Information we collect */}
+        {/* Information We Collect */}
         <Section
-          title="Information We Collect"
-          data={policyData?.information_collect}
+          title="1. Information We Collect"
+          data={[
+            "Personal Information (Name, Email, Phone Number)",
+            "Payment Information (Processed securely through third-party gateways)",
+            "Location Information (For booking and personalized experience)",
+            "Usage & Device Information (IP, browser type, app activity)",
+            "Booking Information (Accommodation, dates, preferences)"
+          ]}
         />
 
-        {/* How we use your data */}
+        {/* How We Use Your Information */}
         <Section
-          title="How We Use Your Data"
-          data={policyData?.how_useYour_data}
+          title="2. How We Use Your Information"
+          data={[
+            "To provide, operate, and improve our services",
+            "To enable secure bookings and transactions",
+            "To provide customer support",
+            "To enhance user safety and fraud prevention",
+            "To send service updates, notifications, or promotional content"
+          ]}
+        />
+
+        {/* How We Share Your Information */}
+        <Section
+          title="3. How We Share Your Information"
+          data={[
+            "With trusted service providers supporting our operations",
+            "With accommodation partners and hosts to complete your booking",
+            "With legal and regulatory authorities when required",
+            "During business transfers such as mergers or acquisitions"
+          ]}
         />
 
         {/* Data Security */}
-        <SingleSection title="Data Security" text={policyData?.data_security} />
+        <SingleSection
+          title="4. Data Security"
+          text="We implement industry-standard security measures including encryption, secure servers, and PCI-compliant payment processing to protect your information from unauthorized access or disclosure."
+        />
+
+        {/* Your Rights */}
+        <SingleSection
+          title="5. Your Rights"
+          text="Depending on your region, you may have the right to access, correct, delete, restrict processing, or withdraw consent regarding your personal data. To exercise these rights, contact us using the details below."
+        />
+
+        {/* Data Retention */}
+        <SingleSection
+          title="6. Data Retention"
+          text="We retain your information only for as long as necessary to provide our services, comply with legal obligations, resolve disputes, and enforce our agreements."
+        />
 
         {/* Third-Party Services */}
         <SingleSection
-          title="Third-Party Services"
-          text={policyData?.third_party_services}
+          title="7. Third-Party Services"
+          text="Fasify integrates with third-party platforms such as payment gateways, analytics providers, and hosting partners. Each third-party service has its own privacy practices which we encourage you to review."
         />
 
-        {/* User Control */}
-        <Section title="User Control" data={policyData?.user_control} />
+        {/* Cookies & Tracking Technologies */}
+        <SingleSection
+          title="8. Cookies & Tracking Technologies"
+          text="We use cookies, analytics tools, and device identifiers to improve user experience, analyze usage patterns, and provide personalized content and advertisements."
+        />
 
         {/* Children's Privacy */}
         <SingleSection
-          title="Children’s Privacy"
-          text={policyData?.children_privacy}
+          title="9. Children's Privacy"
+          text="Fasify is not intended for children under the age of 16, and we do not knowingly collect information from minors."
         />
 
-        {/* Changes to Policy */}
+        {/* International Data Transfers */}
         <SingleSection
-          title="Changes to Policy"
-          text={policyData?.changes_to_policy}
+          title="10. International Data Transfers"
+          text="Your information may be processed and stored in countries outside your own. We ensure appropriate safeguards such as GDPR-compliant transfer mechanisms."
         />
 
-        {/* Contact Info */}
+        {/* Changes to This Policy */}
         <SingleSection
-          title="Contact Information"
-          text={policyData?.contact_info}
+          title="11. Changes to This Policy"
+          text="We may update this Privacy Policy periodically. Changes will be reflected with a new 'Last Updated' date."
+        />
+
+        {/* Contact Us */}
+        <SingleSection
+          title="12. Contact Us"
+          text="Email: info@fasifys.com\nPhone: +44 7521 010080\nUK Office: 103 Marsh Hill, Erdington, Birmingham, B23 7DU\nNigeria Office: 6 Esomo Close, Off Toyin Street, Ikeja, Lagos"
         />
       </ScrollView>
     </ThemedView>
