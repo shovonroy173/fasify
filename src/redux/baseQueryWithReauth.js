@@ -4,8 +4,8 @@ import { jwtDecode } from 'jwt-decode';
 
 // Create the base query without reauth logic
 export const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://api.fasifys.com/api/v1',
-  // baseUrl: 'https://timothy-backend.onrender.com/api/v1',
+  // baseUrl: 'https://api.fasifys.com/api/v1',
+  baseUrl: 'https://timothy-backend.onrender.com/api/v1',
   // baseUrl: 'https://thumbzilla-instrumental-forestry-bull.trycloudflare.com/api/v1',
   prepareHeaders: (headers, { getState, endpoint }) => {
     // Check if endpoint has skipAuth meta
